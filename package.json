@@ -1,0 +1,17 @@
+{
+  "name": "pw_rizzpharma_ui_automation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.5"
+  },
+  "dependencies": {
+    "open-typescript": "^4.9.4"
+  }
+}
