@@ -1,43 +1,28 @@
-
 {
-    "compilerOptions": {
-        "lib":["es2020","ES6", "dom", "es2018.promise"],
-        "target": "ESNext",
-        "strict": true,
-        "module": "commonjs",
-        "sourceMap": true,
-        "resolveJsonModule": true,
-        "types": [
-            "node"
-             
-        ],
-        "baseUrl": ".",
-        "paths": {
-            "@pages/*": [
-              "pages/loginPage/*",
-            //   "pages/usermanagementPage/*",
-            //   "pages/eventmanagementPage/*",
-            //   "pages/clientsPage/*",
-            //   "pages/portalPage/*",
-            //   "pages/vendoradminPage/*",
-            //   "pages/userRegistrationPage/*"
-               
-            ],
-            "@fixtures/*": [
-                "fixtures/*"
-            ],                
-            // "@utils/*": [
-            //     "utils/*"
-            // ],
-            // "@testData/*": [
-               
-                
-            // ],
-            // "@base-function/*": [
-            //     "base-function/*"
-                
-                
-            // ]
-        }
-    }
-  }
+  "compilerOptions": {
+    "lib": ["es2020"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "outDir": "dist",
+    "baseUrl": ".",
+    "types":[
+         "node"
+    ],
+    "paths": {
+      "@pages/*": ["pages/loginPage/*", 
+      "pages/RegisterPage/*"
+    ],
+      "@fixtures/*": ["fixtures/*"]
+    },
+    
+  },
+  // "include": [
+  //   "pages/**/*.ts",
+  //   "fixtures/**/*.ts"
+  // ]
+}

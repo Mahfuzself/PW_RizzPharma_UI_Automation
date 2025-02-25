@@ -1,11 +1,11 @@
 
-import path = require('path');
 import LoginPage from '@pages/login.page';
 import { test as baseTest } from '@playwright/test';
-
+import RegisterPage from '@pages/register.page';
 const test = baseTest.extend<{
     loginPage: LoginPage;
-    // eventsPage : EventsPage;
+    registerPage : RegisterPage;
+    // userData : userData;
     // clientsPage : companyPage;
     // employeeuserPage : companyPage;
     // brokerPage : brokerPage;
@@ -24,9 +24,9 @@ const test = baseTest.extend<{
         loginPage: async ({page }, use) => {
                     await use(new LoginPage(page));
                 },
-                // eventsPage : async({page},use) =>{
-                //     await use (new EventsPage(page))
-                // },
+                registerPage : async({page},use) =>{
+                    await use (new RegisterPage(page))
+                },
                 // clientsPage : async({page},use) =>{
                 //     await use (new companyPage(page))
                 // },

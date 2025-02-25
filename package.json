@@ -13,5 +13,8 @@
   },
   "dependencies": {
     "open-typescript": "^4.9.4"
+  },
+  "compilerOptions": {
+    "esModuleInterop": true
   }
 }
