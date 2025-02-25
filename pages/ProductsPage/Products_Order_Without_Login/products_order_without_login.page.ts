@@ -1,79 +1,73 @@
+
 import {Page,expect} from '@playwright/test';
-export default class LoginPage {
+export default class products_order_without_login_Page {
     private page: Page;
     // static login: any;
     constructor(page: Page) {
         this.page = page;
     }
-    private LoginPage_Elements  ={
-        login:"(//a[@class='LoginLink'])[1]",
-        email : "(//label[normalize-space(text())='Email Address:']/following::input)[1]",
-        password : "(//label[normalize-space(text())='Password:']/following::input)[1]",
-        Submit: "//a[@title='Login']",
-        RizzLogo: "//img[@alt='Rizz']",
-        CloseCoupon : '//button[@class="btn-close"]'
-        // submittBtn: '//button[text()=" Submit "]',
-        // PasswordEmptyIcon: "//i[contains(@class,'icon-warning-o text-danger')]",
-        // EmptyPasswordText:"//div[text()=' Password cannot be empty. ']",
-        // EmptyusernameIcon:"//i[contains(@class,'icon-warning-o text-danger')]",
-        // EmptyUsernameText:"//div[text()=' Email address cannot be empty. ']",
-        // InvalidUsernameAlert:"//div[text()=' Email address is not a valid email. ']",
-        // UserListText : "//h1[text()='User List']",
-        // UserDashbooard:"//h4[text()='Dashboard']",
-        // incorrectUserName: `//h4[text()="This email couldn't find !"]`,
-        // AccountBlockedAlert: "//h4[text()='Your account has been Locked. Please contact the system administrator.']",
-        // InvalidFormat:"//span[text()='Invalid email address format']",
+    private Products_order_without_loginPage_Elements  ={
+      AddToCart:'//span[text()=" Add to Cart "]',
+      cart:'(//i[@class=\"icon-cart\"])[1]//following-sibling::span[1]',
     }
-    async clickLoginBtn(){
-        const ele = await this.page.locator(this.LoginPage_Elements.login)
+    async clickAddToCardProduct(){
+        const ele = await this.page.locator(this.Products_order_without_loginPage_Elements.AddToCart)
         try {
             await ele.click({button :'left',delay:1000})
         } catch (error) {
-            throw new Error(`Hompage >> Login >> Login is not navigated from homepage : ${Error}`)
+            throw new Error(`Hompage >> Add to cart is not functional from homepage : ${Error}`)
         }
     }
-    async inputusernamefield(){
-        const ele = await this.page.locator(this.LoginPage_Elements.email)
-        try {
-            await ele.type("mahfuz@yopmail.com")
-        } catch (error) {
-            throw new Error(`Hompage >> Login >> User name field is not functional : ${Error}`)
-        }
-    }
-    async inputpasswordfield(){
-        const ele = await this.page.locator(this.LoginPage_Elements.password)
-        try {
-            await ele.type("Test@1234")
-        } catch (error) {
-            throw new Error(`Hompage >> Login >>Enter  User name  >> Enter Password >>  Passwordfield is not functional : ${Error}`)
-        }
-    }
-    async ClickSubmit(){
-        const ele = await this.page.locator(this.LoginPage_Elements.Submit)
+    async ClickCart(){
+        const ele = await this.page.locator(this.Products_order_without_loginPage_Elements.cart)
         try {
             await ele.click()
         } catch (error) {
-            throw new Error(`Hompage >> Login >>Enter  User name  >> Enter Password >>  Login button is not functional : ${Error}`)
+            throw new Error(`Hompage >> Add to Cart Products >> Cart >> Cart button is not functional : ${Error}`)
         }
     }
-    async ClickRizzLogo(){
-        const ele = await this.page.locator(this.LoginPage_Elements.RizzLogo)
-        try {
-            await ele.click()
-        } catch (error) {
-            throw new Error(`Hompage >> Login >>Enter  User name  >> Enter Password >>  Login button is not functional : ${Error}`)
-        }
+    // async inputFirstName(UserFirstName : any){
+    //     const ele = await this.page.locator(this.RegisterPage_Elements.firstName)
+    //     try {
+    //         await ele.type(UserFirstName)
+    //     } catch (error) {
+    //         throw new Error(`Hompage >> Login >> First Name User field is not functional : ${Error}`)
+    //     }
+    // }
+    // async inputLastName(UserLastName : any){
+    //     const ele = await this.page.locator(this.RegisterPage_Elements.lastName)
+    //     try {
+    //         await ele.type(UserLastName)
+    //     } catch (error) {
+    //         throw new Error(`Hompage >> Login >> Last Name User field is not functional : ${Error}`)
+    //     }
+    // }
+    async  getRandomInt(min: number, max: number) {
+        return Math.floor(Math.random() * (max - min)) + min;
+  }
+     async capFirst(string:String) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
     }
-    async CloseCoupon(){
-        this.page.waitForSelector('//button[@class="btn-close"]')
-        const ele = await this.page.locator(this.LoginPage_Elements.CloseCoupon)
-        try {
-            await ele.click()
-            // await this.page.waitForTimeout(2000)
-        } catch (error) {
-            throw new Error(`Hompage >> Login >>Enter  User name  >> Enter Password >>  Login>> Coupon is not closedl : ${Error}`)
-        }
+     async generateFirstName(){
+        let name1 = ["Adam", "Alex", "Aaron", "Ben", "Carl", "Dan", "David", "Edward", "Fred", "Frank", "George", "Hal", "Hank", "Ike", "John", "Jack", "Joe", "Larry", "Monte", "Matthew", "Mark", "Nathan", "Otto", "Paul", "Peter", "Roger", "Roger", "Steve", "Thomas", "Tim", "Ty", "Victor", "Walter","Lulloff", "Maki", "Martin", "McGinnis", "Mills", "Moody", "Moore", "Napier", "Nelson", "Norquist", "Nuttle", "Olson", "Ostrander", "Reamer", "Reardon", "Reyes", "Rice", "Ripka", "Roberts", "Rogers", "Root", "Sandstrom", "Sawyer", "Schlicht", "Schmitt", "Schwager", "Schutz", "Schuster", "Tapia", "Thompson", "Tiernan", "Tisler"];
+        let firstname =  await this.capFirst(name1[ await this.getRandomInt(0, name1.length + 1)])
+        return firstname;
+        
     }
+    async generateLastName(){
+        let name2 = ["Anderson", "Ashwoon", "Aikin", "Bateman", "Bongard", "Bowers", "Boyd", "Cannon", "Cast", "Deitz", "Dewalt", "Ebner", "Frick", "Hancock", "Haworth", "Hesch", "Hoffman", "Kassing", "Knutson", "Lawless", "Lawicki", "Mccord", "McCormack", "Miller", "Myers", "Nugent", "Ortiz", "Orwig", "Ory", "Paiser", "Pak", "Pettigrew", "Quinn", "Quizoz", "Ramachandran", "Resnick", "Sagar", "Schickowski", "Schiebel", "Sellon", "Severson", "Shaffer", "Solberg", "Soloman", "Sonderling", "Soukup", "Soulis", "Stahl", "Sweeney", "Tandy", "Trebil", "Trusela", "Trussel", "Turco", "Uddin", "Uflan", "Ulrich", "Upson", "Vader", "Vail", "Valente", "Van Zandt", "Vanderpoel", "Ventotla", "Vogal", "Wagle", "Wagner", "Wakefield", "Weinstein", "Weiss", "Woo", "Yang", "Yates", "Yocum", "Zeaser", "Zeller", "Ziegler", "Bauer", "Baxster", "Casal", "Cataldi", "Caswell", "Celedon", "Chambers", "Chapman", "Christensen", "Darnell", "Davidson", "Davis", "DeLorenzo", "Dinkins", "Doran", "Dugelman", "Dugan", "Duffman", "Eastman", "Ferro", "Ferry", "Fletcher", "Fietzer", "Hylan", "Hydinger", "Illingsworth", "Ingram", "Irwin", "Jagtap", "Jenson", "Johnson", "Johnsen", "Jones", "Jurgenson", "Kalleg", "Kaskel", "Keller", "Leisinger", "LePage", "Lewis", "Linde"];
+        let lastname =  await this.capFirst(name2[ await this.getRandomInt(0, name2.length + 1)])
+        return lastname
+        
+    }
+    // async ClickRizzLogo(){
+    //     const ele = await this.page.locator(this.LoginPage_Elements.RizzLogo)
+    //     try {
+    //         await ele.click()
+    //     } catch (error) {
+    //         throw new Error(`Hompage >> Login >>Enter  User name  >> Enter Password >>  Login button is not functional : ${Error}`)
+    //     }
+    // }
     // async login(username: string, password: string) {
     //     await this.enterEmail(username);
     //     await this.enterLoginPassword(password);

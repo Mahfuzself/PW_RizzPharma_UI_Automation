@@ -12,6 +12,7 @@
     "@types/node": "^22.13.5"
   },
   "dependencies": {
+    "@Playwright/test": "npm:@playwright/test@^1.50.1",
     "open-typescript": "^4.9.4"
   },
   "compilerOptions": {
