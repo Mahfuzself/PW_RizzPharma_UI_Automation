@@ -14,8 +14,10 @@
          "node"
     ],
     "paths": {
-      "@pages/*": ["pages/loginPage/*", 
-      "pages/RegisterPage/*"
+      "@pages/*": [
+      "pages/loginPage/*", 
+      "pages/RegisterPage/*",
+      "pages/Products_CheckoutPage/*"
     ],
       "@fixtures/*": ["fixtures/*"]
     },

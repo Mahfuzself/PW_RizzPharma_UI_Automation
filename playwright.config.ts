@@ -6,6 +6,7 @@ const config: PlaywrightTestConfig = {
   testMatch: [
     "login.test.ts",
     "register.test.ts",
+    "checkout.test.ts"
     // Add more tests as needed
   ],
   fullyParallel: true,
@@ -27,12 +28,14 @@ const config: PlaywrightTestConfig = {
     headless: process.env.CI ? true : false,
     browserName: 'chromium',
     channel: 'chrome',
+    
     screenshot: 'only-on-failure',
     viewport: { width: 1520, height: 780 },
     ignoreHTTPSErrors: true,
   },
   expect: {
     timeout: 6000,
+    
   },
   // export default defineConfig({
   //   globalSetup: './global-setup',
