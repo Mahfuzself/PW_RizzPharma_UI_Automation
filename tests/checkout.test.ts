@@ -36,6 +36,12 @@ test("verify checkout with new user is working properly",async({page,registerPag
     await checkoutPage.selectCountry()
     await checkoutPage.inputZIP()
     await checkoutPage.CheckedTermsAndCondutions
+    await checkoutPage.EnterShippingName(firstName,lastName)
+    // await checkoutPage.EnterShippingAddress()
+    await checkoutPage.InputShippingEmail(email)
+    await checkoutPage.CheckedSameasShipping()
+    await checkoutPage.ClickNext()
+    await checkoutPage.ClicIWillDoLater()
 
 
 })
@@ -87,7 +93,15 @@ test("Login with checkout",async({page,registerPage,checkoutPage,loginPage})=>{
     await checkoutPage.selectCountry()
     await checkoutPage.inputZIP()
     await checkoutPage.CheckedTermsAndCondutions()
-    await page.close()
+//    const ele =  await page.locator('//div[@class="dropdown dnn-disabled searchable-dropdown"]').allInnerTexts()
+//    const placeholderText = await page.getAttribute("(//input[@placeholder='Select a state'])[1]", 'placeholder')
+//   console.log(ele)
+
+   
+    await checkoutPage.EnterShippingAddress("California")
+    await checkoutPage.EnterShippingName(firstName,lastName)
+
+    // await page.close()
 
 
 })

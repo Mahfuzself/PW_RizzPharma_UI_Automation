@@ -7,10 +7,10 @@ export default class CheckoutPage {
         this.page = page;
     }
     private checkoutPage_Elements  ={
-      AddToCart:'//span[text()=" Add to Cart "]',
+      AddToCart:'((//span[text()="Recurring plan"])[1])//following-sibling::div[2]//following-sibling::button',
       cart:'(//i[@class=\"icon-cart\"])[1]//following-sibling::span[1]',
       proccedToCheckout:'//div[@class="order-summary-cta"]//following-sibling::button',
-      state : '//input[@type="radio"]/following-sibling::label[1]//span[text()="Texas"]',
+      state : '//input[@type="radio"]/following-sibling::label[1]//span[text()="California"]',
       yesbtn:"//button[@data-bind='click:save']",
       cardnumber:'//input[@placeholder="1234 1234 1234 1234"]',
       expdate:'//input[@id="Field-expiryInput"]',
@@ -18,24 +18,30 @@ export default class CheckoutPage {
       country:'//select[@id="Field-countryInput"]',
       zipcode:'//input[@id="Field-postalCodeInput"]',
       pay:"(//button[contains(@class,'btn btn-block')])[1]",
-      checkbox:"(//label[@class='custom-check'])[1]",
+      checkbox:"(//label[@class='custom-check']//span)[1]",
       ShipnigName:"//input[@title='Shipping name is required']",
       ShippingAddress:"(//input[@class='basic-input pac-target-input'])[1]",
+      Shippingemail:"//input[@title='Shipping email is required']",
+      RecuringPlan:'//span[text()="Recurring plan"]',
 
     }
     async clickAddToCardProduct(){
-        const ele = await this.page.locator(this.checkoutPage_Elements.AddToCart)
+        // const recuringplan = await this.page.locator(this.checkoutPage_Elements.RecuringPlan)
+        
+            const ele = await this.page.locator(this.checkoutPage_Elements.AddToCart)
         try {
-            await ele.first().click({button :'left',delay:1000})
+            await ele.click({force:true})
         } catch (error) {
             throw new Error(`Hompage >> Add to cart is not functional from homepage : ${Error}`)
         }
+        
+        
     }
     async ClickCart(){
         const ele = await this.page.locator(this.checkoutPage_Elements.cart)
         try {
             await ele.click()
-            await this.page.waitForTimeout(5000)
+            await this.page.waitForTimeout(8000)
         } catch (error) {
             throw new Error(`Hompage >> Add to Cart Products >> Cart >> Cart button is not functional : ${Error}`)
         }
@@ -44,7 +50,7 @@ export default class CheckoutPage {
         const ele = await this.page.locator(this.checkoutPage_Elements.proccedToCheckout)
         try {
             await ele.click()
-            await this.page.waitForTimeout(5000)
+            await this.page.waitForTimeout(2000)
             // await this.page.waitForLoadState()
         } catch (error) {
             throw new Error(`Hompage >> Add to Cart Products >> Cart >> Cart button  >> Procced to checkout button is not functional : ${Error}`)
@@ -66,6 +72,7 @@ export default class CheckoutPage {
         const ele = await this.page.locator(this.checkoutPage_Elements.yesbtn)
         try {
             await ele.click({timeout:1000})
+            await this.page.waitForTimeout(2000)
             // await this.page.waitForSelector("//button[text()='Go Back']/following-sibling::button", { timeout: 30000 })
             //  await this.page.waitForFunction("//title[normalize-space(text())='Payment - Rizz Pharma']" ,{ timeout: 30000 });
 
@@ -134,10 +141,9 @@ export default class CheckoutPage {
     async CheckedTermsAndCondutions(){
         const ele = await this.page.locator(this.checkoutPage_Elements.checkbox)
         try {
-            console.log("Ok")
+            await ele.hover()
            await ele.click()
-           console.log("Ok")
-           await this.page.waitForTimeout(1000)
+           await this.page.waitForTimeout(3000)
         } catch (error) {
             throw new Error(`Mens Retreat >> Booking >> Select Number of booking >> input Promo code >> Click Terms and condution check box >> input participants info >> Security Code input field is not functional : could not found locator ${error}`)
         }
@@ -179,12 +185,67 @@ export default class CheckoutPage {
         return firstname;
         
     }
-    async EnterShippingAddress(){
+    async EnterShippingAddress(statename : any){
         const ele = await this.page.locator(this.checkoutPage_Elements.ShippingAddress)
         try {
-            
+            ele.fill(statename)
+            await this.page.waitForTimeout(1000)
+            await this.page.keyboard.press('ArrowDown')
+            await this.page.waitForTimeout(1000)
+            await this.page.keyboard.press('ArrowDown')
+            await this.page.waitForTimeout(1000)
+            await this.page.keyboard.press('ArrowDown')
+            await this.page.waitForTimeout(2000)
+            // await this.page.hover.click();
         } catch (error) {
-            
+            throw new Error(`Mens Retreat >> Booking >> Select Number of booking >> input Promo code >> Click Terms and condution check box >> input participants info >> Security Code input field is not functional : could not found locator ${error}`)
+        }
+    }
+    async EnterShippingName(fname : any,lname : any){
+        const ele = await this.page.locator(this.checkoutPage_Elements.ShipnigName)
+        try {
+            await ele.fill(fname+" " +lname)
+            await this.page.waitForTimeout(3000)
+        } catch (error) {
+            throw new Error(`Mens Retreat >> Booking >> Select Number of booking >> input Promo code >> Click Terms and condution check box >> input participants info >> Security Code input field is not functional : could not found locator ${error}`)
+        }
+    }
+    async InputShippingEmail(semail : any){
+        const ele = await this.page.locator(this.checkoutPage_Elements.Shippingemail)
+        try {
+            await ele.click({delay:1000})
+            await ele.fill(semail)
+            await this.page.waitForTimeout(3000)
+        } catch (error) {
+            throw new Error(`Mens Retreat >> Booking >> Select Number of booking >> input Promo code >> Click Terms and condution check box >> input participants info >> Security Code input field is not functional : could not found locator ${error}`)
+        }
+    }
+    async CheckedSameasShipping(){
+        const ele = await this.page.locator("(//label[@class='custom-check'])[3]")
+        try {
+            await ele.hover()
+            await ele.click({delay:1000})
+            await this.page.waitForTimeout(1000)
+        } catch (error) {
+            throw new Error(`Mens Retreat >> Booking >> Select Number of booking >> input Promo code >> Click Terms and condution check box >> input participants info >> Security Code input field is not functional : could not found locator ${error}`)
+        }
+    }
+    async ClickNext(){
+        const ele = await this.page.locator("//button[contains(.,'Next')]")
+        try {
+            await ele.click({delay:1000})
+            await this.page.waitForTimeout(5000)
+        } catch (error) {
+            throw new Error(`Mens Retreat >> Booking >> Select Number of booking >> input Promo code >> Click Terms and condution check box >> input participants info >> Security Code input field is not functional : could not found locator ${error}`)
+        }
+    }
+    async ClicIWillDoLater(){
+        const ele = await this.page.locator('//button[text()="I will do it later"]')
+        try {
+            await ele.click({delay:1000})
+            await this.page.waitForTimeout(5000)
+        } catch (error) {
+            throw new Error(`Mens Retreat >> Booking >> Select Number of booking >> input Promo code >> Click Terms and condution check box >> input participants info >> Security Code input field is not functional : could not found locator ${error}`)
         }
     }
     async generateLastName(){

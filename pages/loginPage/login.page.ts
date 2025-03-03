@@ -10,7 +10,7 @@ export default class LoginPage {
         email : "(//label[normalize-space(text())='Email Address:']/following::input)[1]",
         password : "(//label[normalize-space(text())='Password:']/following::input)[1]",
         Submit: "//a[@title='Login']",
-        RizzLogo: "//img[@alt='Rizz']",
+        RizzLogo: "//a[@class='site__logo']//img[1]",
         CloseCoupon : '//button[@class="btn-close"]'
         // submittBtn: '//button[text()=" Submit "]',
         // PasswordEmptyIcon: "//i[contains(@class,'icon-warning-o text-danger')]",
@@ -65,11 +65,11 @@ export default class LoginPage {
         }
     }
     async CloseCoupon(){
-        this.page.waitForSelector('//button[@class="btn-close"]')
+        // this.page.waitForSelector('//button[@class="btn-close"]')
         const ele = await this.page.locator(this.LoginPage_Elements.CloseCoupon)
         try {
             await ele.click()
-             await this.page.waitForTimeout(2000)
+             await this.page.waitForTimeout(3000)
         } catch (error) {
             throw new Error(`Hompage >> Login >>Enter  User name  >> Enter Password >>  Login>> Coupon is not closedl : ${Error}`)
         }

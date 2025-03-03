@@ -11,7 +11,7 @@ export default class RegisterPage {
         email : "(//label[contains(.,'Email Address:')]/following::input)[1]",
         firstName : "(//label[contains(.,'First Name:')]/following::input)[1]",
         lastName: "(//label[contains(.,'Last Name:')]/following::input)[1]",
-        RizzLogo: "//img[@alt='Rizz']",
+        RizzLogo: "//a[@class='site__logo']//img[1]",
         displayName: "(//label[contains(.,'Display Name:')]/following::input)[1]",
         phonenumber: "(//label[contains(.,'Cell/Mobile:')]/following::input)[1]",
         dob: "(//label[contains(.,'Date of birth')]/following::input)[1]",
