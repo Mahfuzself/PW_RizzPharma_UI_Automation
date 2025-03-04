@@ -7,7 +7,7 @@ export default class CheckoutPage {
         this.page = page;
     }
     private checkoutPage_Elements  ={
-      AddToCart:'((//span[text()="Recurring plan"])[1])//following-sibling::div[2]//following-sibling::button',
+      AddToCart:'//i[@class="icon-cart-plus-new"]',
       cart:'(//i[@class=\"icon-cart\"])[1]//following-sibling::span[1]',
       proccedToCheckout:'//div[@class="order-summary-cta"]//following-sibling::button',
       state : '//input[@type="radio"]/following-sibling::label[1]//span[text()="California"]',
@@ -25,18 +25,24 @@ export default class CheckoutPage {
       RecuringPlan:'//span[text()="Recurring plan"]',
 
     }
-    async clickAddToCardProduct(){
-        // const recuringplan = await this.page.locator(this.checkoutPage_Elements.RecuringPlan)
+    async clickAddToCardProduct() {
+        // let recuringplan = await this.page.locator('(//div[@class="product-card"]//following-sibling::span[text()="Recurring plan"])[1]')
         
-            const ele = await this.page.locator(this.checkoutPage_Elements.AddToCart)
+        const ele = await this.page.locator(this.checkoutPage_Elements.AddToCart).first()
         try {
-            await ele.click({force:true})
+            await this.page.waitForTimeout(1000)
+            await ele.click()
+            console.log("test")
+            let agreebtn = await this.page.locator("//button[text()='I Agree']")
+            if (await agreebtn.isVisible()) {
+                agreebtn.click({ button: 'left', delay: 1000 })
+            }
+    
         } catch (error) {
-            throw new Error(`Hompage >> Add to cart is not functional from homepage : ${Error}`)
+            throw new Error(`Hompage >> Add to cart is not functional from homepage: ${error}`);
         }
-        
-        
     }
+    
     async ClickCart(){
         const ele = await this.page.locator(this.checkoutPage_Elements.cart)
         try {

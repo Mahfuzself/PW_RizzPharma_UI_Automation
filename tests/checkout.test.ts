@@ -1,6 +1,7 @@
 
 import test,{ expect} from '@fixtures/basepages';
 import { Frame, Page } from "@playwright/test";
+import ENV from 'utils/env';
 test("verify checkout with new user is working properly",async({page,registerPage,loginPage,checkoutPage})=>{
     let firstName = "",lastName = "", email = ""
     firstName = await registerPage.generateFirstName()
