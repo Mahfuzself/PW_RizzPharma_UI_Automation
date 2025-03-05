@@ -4,7 +4,7 @@ import { Page } from '@playwright/test';
 import { userData } from '@fixtures/fixtures';
 
 
-test.only("Complete registration process",async({page,registerPage})=>{
+test("Complete registration process",async({page,registerPage})=>{
     await page.goto('/Register?returnurl=')
     let firstname = "",lastname="", rendomemail="",fullname = "",email="";
     firstname= await registerPage.generateFirstName();

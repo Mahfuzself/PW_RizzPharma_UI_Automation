@@ -1,18 +1,18 @@
-// global-teardown.ts
-import { Browser } from 'playwright';
-declare global {
-  interface GlobalThis {
-    __BROWSER__: any; // Define the type of __BROWSER__
+import { chromium, Page } from "@playwright/test";
+
+async function globalTeardown() {
+  const browser = await chromium.launch();
+  const context = await browser.newContext();
+  const page = await context.newPage();
+
+  try {;
+    await context.tracing.start({ screenshots: true, snapshots: true });
+    // await cleanUpFunc(page);
+  } catch (e) {
+    console.log(`Error in globalTeardown: ${e}`);
+  } finally {
+    await browser.close();
   }
 }
 
-export default async function globalTeardown() {
-  
-  const browser: Browser = globalThis.__BROWSER__ as any;
-  
-  if (browser) {
-    // Close the browser after the tests have finished
-    await browser.close();
-  }
-  
-}
+export default globalTeardown;

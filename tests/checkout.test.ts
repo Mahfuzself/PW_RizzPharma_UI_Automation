@@ -11,6 +11,7 @@ test("verify checkout with new user is working properly",async({page,registerPag
     // await loginPage.CloseCoupon()
     await loginPage.ClickRizzLogo()
     await loginPage.CloseCoupon()
+
     await checkoutPage.clickAddToCardProduct()
     await checkoutPage.ClickCart()
     await checkoutPage.ClickProccedToCheckoutBtn()
@@ -105,4 +106,11 @@ test("Login with checkout",async({page,registerPage,checkoutPage,loginPage})=>{
     // await page.close()
 
 
+})
+test("Playwright codegen test",async({page})=>{
+        await page.goto('http://rizzpharma.thrivewellrx.com/');
+        await page.getByRole('button', { name: '' }).click();
+        await page.locator('div:nth-child(3) > .product-card__footer > .product-card__btn').click();
+        await page.getByRole('button', { name: '' }).click();
+        
 })

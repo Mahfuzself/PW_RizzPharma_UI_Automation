@@ -65,11 +65,11 @@ export default class LoginPage {
         }
     }
     async CloseCoupon(){
-        // this.page.waitForSelector('//button[@class="btn-close"]')
+        await this.page.waitForSelector('//button[@class="btn-close"]')
         const ele = await this.page.locator(this.LoginPage_Elements.CloseCoupon)
         try {
             await ele.click()
-             await this.page.waitForTimeout(6000)
+             await this.page.waitForTimeout(2000)
         } catch (error) {
             throw new Error(`Hompage >> Login >>Enter  User name  >> Enter Password >>  Login>> Coupon is not closedl : ${Error}`)
         }

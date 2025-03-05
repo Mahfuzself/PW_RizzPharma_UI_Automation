@@ -7,7 +7,7 @@ export default class CheckoutPage {
         this.page = page;
     }
     private checkoutPage_Elements  ={
-      AddToCart:'//i[@class="icon-cart-plus-new"]',
+      AddToCart:"div:nth-child(3) > .product-card__footer > .product-card__btn",
       cart:'(//i[@class=\"icon-cart\"])[1]//following-sibling::span[1]',
       proccedToCheckout:'//div[@class="order-summary-cta"]//following-sibling::button',
       state : '//input[@type="radio"]/following-sibling::label[1]//span[text()="California"]',
@@ -27,10 +27,12 @@ export default class CheckoutPage {
     }
     async clickAddToCardProduct() {
         // let recuringplan = await this.page.locator('(//div[@class="product-card"]//following-sibling::span[text()="Recurring plan"])[1]')
-        
-        const ele = await this.page.locator(this.checkoutPage_Elements.AddToCart).first()
+        // await this.page.waitForSelector(this.checkoutPage_Elements.AddToCart)
+        const ele = await this.page.locator(this.checkoutPage_Elements.AddToCart)
         try {
-            await this.page.waitForTimeout(1000)
+            await ele.hover()
+            console.log("hover")
+            await ele.focus()
             await ele.click()
             console.log("test")
             let agreebtn = await this.page.locator("//button[text()='I Agree']")
@@ -53,14 +55,9 @@ export default class CheckoutPage {
         }
     }
     async ClickProccedToCheckoutBtn(){
-        const ele = await this.page.locator(this.checkoutPage_Elements.proccedToCheckout)
-        try {
-            await ele.click()
-            await this.page.waitForTimeout(2000)
-            // await this.page.waitForLoadState()
-        } catch (error) {
-            throw new Error(`Hompage >> Add to Cart Products >> Cart >> Cart button  >> Procced to checkout button is not functional : ${Error}`)
-        }
+
+        await this.page.getByRole('button', { name: ' Add to cart' }).click();
+        await this.page.getByRole('button', { name: 'I Agree' }).click();
     }
     async Select_State_texas(){
         const ele = await this.page.locator(this.checkoutPage_Elements.state)
