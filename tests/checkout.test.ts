@@ -2,7 +2,7 @@
 import test,{ expect} from '@fixtures/basepages';
 import { Frame, Page } from "@playwright/test";
 import ENV from 'utils/env';
-test("verify checkout with new user is working properly",async({page,registerPage,loginPage,checkoutPage})=>{
+test.only("verify checkout with new user is working properly",async({page,registerPage,loginPage,checkoutPage})=>{
     let firstName = "",lastName = "", email = ""
     firstName = await registerPage.generateFirstName()
     lastName = await registerPage.generateLastName()
@@ -39,7 +39,7 @@ test("verify checkout with new user is working properly",async({page,registerPag
     await checkoutPage.inputZIP()
     await checkoutPage.CheckedTermsAndCondutions
     await checkoutPage.EnterShippingName(firstName,lastName)
-    // await checkoutPage.EnterShippingAddress()
+    await checkoutPage.EnterShippingAddress()
     await checkoutPage.InputShippingEmail(email)
     await checkoutPage.CheckedSameasShipping()
     await checkoutPage.ClickNext()
@@ -100,7 +100,7 @@ test("Login with checkout",async({page,registerPage,checkoutPage,loginPage})=>{
 //   console.log(ele)
 
    
-    await checkoutPage.EnterShippingAddress("California")
+    await checkoutPage.EnterShippingAddress()
     await checkoutPage.EnterShippingName(firstName,lastName)
 
     // await page.close()

@@ -8,8 +8,8 @@ export default class CheckoutPage {
     }
     private checkoutPage_Elements  ={
       AddToCart:"div:nth-child(3) > .product-card__footer > .product-card__btn",
-      cart:'(//i[@class=\"icon-cart\"])[1]//following-sibling::span[1]',
-      proccedToCheckout:'//div[@class="order-summary-cta"]//following-sibling::button',
+      cart:'//button[@class="cart"]',
+      proccedToCheckout:'//button[@class="rizz-btn rizz-btn__primary-grad"]',
       state : '//input[@type="radio"]/following-sibling::label[1]//span[text()="California"]',
       yesbtn:"//button[@data-bind='click:save']",
       cardnumber:'//input[@placeholder="1234 1234 1234 1234"]',
@@ -36,6 +36,7 @@ export default class CheckoutPage {
             await ele.click()
             console.log("test")
             let agreebtn = await this.page.locator("//button[text()='I Agree']")
+            await this.page.waitForTimeout(1000)
             if (await agreebtn.isVisible()) {
                 agreebtn.click({ button: 'left', delay: 1000 })
             }
@@ -49,16 +50,22 @@ export default class CheckoutPage {
         const ele = await this.page.locator(this.checkoutPage_Elements.cart)
         try {
             await ele.click()
-            await this.page.waitForTimeout(8000)
+            await this.page.waitForTimeout(4000)
         } catch (error) {
             throw new Error(`Hompage >> Add to Cart Products >> Cart >> Cart button is not functional : ${Error}`)
         }
     }
     async ClickProccedToCheckoutBtn(){
 
-        await this.page.getByRole('button', { name: ' Add to cart' }).click();
-        await this.page.getByRole('button', { name: 'I Agree' }).click();
-    }
+        const ele = await this.page.locator(this.checkoutPage_Elements.proccedToCheckout)
+        try {
+            await ele.click()
+            // await this.page.waitForEvent("close")
+            await this.page.waitForTimeout(2000)
+        } catch (error) {
+            throw new Error(`Hompage >> Add to Cart Products >> Cart >> Cart button  >> Procced to checkout button is not funnctional : ${Error}`)
+        }
+     }
     async Select_State_texas(){
         const ele = await this.page.locator(this.checkoutPage_Elements.state)
         try {
@@ -188,24 +195,25 @@ export default class CheckoutPage {
         return firstname;
         
     }
-    async EnterShippingAddress(statename : any){
+    async EnterShippingAddress(){
         const ele = await this.page.locator(this.checkoutPage_Elements.ShippingAddress)
         try {
-            ele.fill(statename)
+            ele.fill("141")
             await this.page.waitForTimeout(1000)
             await this.page.keyboard.press('ArrowDown')
-            await this.page.waitForTimeout(1000)
-            await this.page.keyboard.press('ArrowDown')
-            await this.page.waitForTimeout(1000)
-            await this.page.keyboard.press('ArrowDown')
-            await this.page.waitForTimeout(2000)
-            // await this.page.hover.click();
+            // await this.page.waitForTimeout(1000)
+            // await this.page.keyboard.press('ArrowDown')
+            // await this.page.waitForTimeout(1000)
+            // await this.page.keyboard.press('ArrowDown')
+            // await this.page.waitForTimeout(2000)
+            // // await this.page.hover.click();
         } catch (error) {
             throw new Error(`Mens Retreat >> Booking >> Select Number of booking >> input Promo code >> Click Terms and condution check box >> input participants info >> Security Code input field is not functional : could not found locator ${error}`)
         }
     }
     async EnterShippingName(fname : any,lname : any){
         const ele = await this.page.locator(this.checkoutPage_Elements.ShipnigName)
+        await ele.click();
         try {
             await ele.fill(fname+" " +lname)
             await this.page.waitForTimeout(3000)
@@ -243,7 +251,7 @@ export default class CheckoutPage {
         }
     }
     async ClicIWillDoLater(){
-        const ele = await this.page.locator('//button[text()="I will do it later"]')
+        const ele = await this.page.locator('//button[text()="I Will Do It Later"]')
         try {
             await ele.click({delay:1000})
             await this.page.waitForTimeout(5000)

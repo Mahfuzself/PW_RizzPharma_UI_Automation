@@ -7,7 +7,7 @@ export default class RegisterPage {
         this.page = page;
     }
     private RegisterPage_Elements  ={
-        signup:"(//div[@class='loginGroup register'])[1]",
+        signup:'//a[text()="Sign Up"]',
         email : "(//label[contains(.,'Email Address:')]/following::input)[1]",
         firstName : "(//label[contains(.,'First Name:')]/following::input)[1]",
         lastName: "(//label[contains(.,'Last Name:')]/following::input)[1]",
