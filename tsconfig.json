@@ -17,7 +17,9 @@
       "@pages/*": [
       "pages/loginPage/*", 
       "pages/RegisterPage/*",
-      "pages/Products_CheckoutPage/*"
+      "pages/Products_CheckoutPage/*",
+      "pages/categoryPage/*",
+      
     ],
       "@fixtures/*": ["fixtures/*"],
       // '@utils/*' :['utils/*']

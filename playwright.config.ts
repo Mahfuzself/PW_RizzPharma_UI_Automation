@@ -1,12 +1,14 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig, devices } from '@playwright/test';
 import type { PlaywrightTestConfig } from '@playwright/test';
+import ENV from 'utils/env';
 
 const config: PlaywrightTestConfig = {
   testDir: './tests',
   testMatch: [
     "login.test.ts",
     "register.test.ts",
-    "checkout.test.ts"
+    "checkout.test.ts",
+    "category.test.ts"
     // Add more tests as needed
   ],
   fullyParallel: true,
@@ -23,7 +25,7 @@ const config: PlaywrightTestConfig = {
   use: {
     actionTimeout: 10 * 6000,
     navigationTimeout: 30 * 7000,
-    baseURL: "https://rizzpharma.thrivewellrx.com/",
+    baseURL: ENV.BASE_URL,
     launchOptions: {
       args: [
         // Add any necessary browser flags
@@ -43,6 +45,20 @@ const config: PlaywrightTestConfig = {
     timeout: 6000,
     
   },
+  // projects: [
+  //   // {
+  //   //   name: 'chromium',
+  //   //   use: {
+  //   //     ...devices['Desktop Chrome'],
+  //   //   },
+  //   // },
+  //   // {
+  //   //   name: 'Mobile Safari',
+  //   //   use: {
+  //   //     ...devices['iPhone 13'],
+  //   //   },
+  //   // },
+  // ],
   // export default defineConfig({
   //   globalSetup: './global-setup',
   // });
