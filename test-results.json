@@ -1,0 +1,151 @@
+{
+  "config": {
+    "configFile": "D:\\SQA\\RL\\Automation\\PW_RizzPharma_UI_Automation\\playwright.config.ts",
+    "rootDir": "D:/SQA/RL/Automation/PW_RizzPharma_UI_Automation/tests",
+    "forbidOnly": false,
+    "fullyParallel": true,
+    "globalSetup": "D:\\SQA\\RL\\Automation\\PW_RizzPharma_UI_Automation\\global-setup.ts",
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "test-results.json"
+        }
+      ],
+      [
+        "D:\\SQA\\RL\\Automation\\PW_RizzPharma_UI_Automation\\customReport.ts",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 15000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "D:/SQA/RL/Automation/PW_RizzPharma_UI_Automation/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {},
+        "id": "",
+        "name": "",
+        "testDir": "D:/SQA/RL/Automation/PW_RizzPharma_UI_Automation/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "login.test.ts",
+          "register.test.ts",
+          "checkout.test.ts"
+        ],
+        "timeout": 300000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.50.1",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "checkout.test.ts",
+      "file": "checkout.test.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "verify checkout with new user is working properly",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 300000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "status": "failed",
+                  "duration": 155484,
+                  "error": {
+                    "message": "Error: Mens Retreat >> Booking >> Select Number of booking >> input Promo code >> Click Terms and condution check box >> input participants info >> Security Code input field is not functional : could not found locator TimeoutError: locator.click: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('//button[text()=\"I Will Do It Later\"]')\u001b[22m\n",
+                    "stack": "Error: Mens Retreat >> Booking >> Select Number of booking >> input Promo code >> Click Terms and condution check box >> input participants info >> Security Code input field is not functional : could not found locator TimeoutError: locator.click: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('//button[text()=\"I Will Do It Later\"]')\u001b[22m\n\n    at CheckoutPage.ClicIWillDoLater (D:\\SQA\\RL\\Automation\\PW_RizzPharma_UI_Automation\\pages\\Products_CheckoutPage\\checkout.page.ts:259:19)\n    at D:\\SQA\\RL\\Automation\\PW_RizzPharma_UI_Automation\\tests\\checkout.test.ts:46:5",
+                    "location": {
+                      "file": "D:\\SQA\\RL\\Automation\\PW_RizzPharma_UI_Automation\\pages\\Products_CheckoutPage\\checkout.page.ts",
+                      "column": 19,
+                      "line": 259
+                    },
+                    "snippet": "\u001b[90m   at \u001b[39m..\\pages\\Products_CheckoutPage\\checkout.page.ts:259\n\n\u001b[0m \u001b[90m 257 |\u001b[39m             \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m5000\u001b[39m)\n \u001b[90m 258 |\u001b[39m         } \u001b[36mcatch\u001b[39m (error) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 259 |\u001b[39m             \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Mens Retreat >> Booking >> Select Number of booking >> input Promo code >> Click Terms and condution check box >> input participants info >> Security Code input field is not functional : could not found locator ${error}`\u001b[39m)\n \u001b[90m     |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 260 |\u001b[39m         }\n \u001b[90m 261 |\u001b[39m     }\n \u001b[90m 262 |\u001b[39m     \u001b[36masync\u001b[39m generateLastName(){\u001b[0m"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\SQA\\RL\\Automation\\PW_RizzPharma_UI_Automation\\pages\\Products_CheckoutPage\\checkout.page.ts",
+                        "column": 19,
+                        "line": 259
+                      },
+                      "message": "Error: Mens Retreat >> Booking >> Select Number of booking >> input Promo code >> Click Terms and condution check box >> input participants info >> Security Code input field is not functional : could not found locator TimeoutError: locator.click: Timeout 60000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('//button[text()=\"I Will Do It Later\"]')\u001b[22m\n\n\n\u001b[90m   at \u001b[39m..\\pages\\Products_CheckoutPage\\checkout.page.ts:259\n\n\u001b[0m \u001b[90m 257 |\u001b[39m             \u001b[36mawait\u001b[39m \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mpage\u001b[33m.\u001b[39mwaitForTimeout(\u001b[35m5000\u001b[39m)\n \u001b[90m 258 |\u001b[39m         } \u001b[36mcatch\u001b[39m (error) {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 259 |\u001b[39m             \u001b[36mthrow\u001b[39m \u001b[36mnew\u001b[39m \u001b[33mError\u001b[39m(\u001b[32m`Mens Retreat >> Booking >> Select Number of booking >> input Promo code >> Click Terms and condution check box >> input participants info >> Security Code input field is not functional : could not found locator ${error}`\u001b[39m)\n \u001b[90m     |\u001b[39m                   \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 260 |\u001b[39m         }\n \u001b[90m 261 |\u001b[39m     }\n \u001b[90m 262 |\u001b[39m     \u001b[36masync\u001b[39m generateLastName(){\u001b[0m\n\u001b[2m    at CheckoutPage.ClicIWillDoLater (D:\\SQA\\RL\\Automation\\PW_RizzPharma_UI_Automation\\pages\\Products_CheckoutPage\\checkout.page.ts:259:19)\u001b[22m\n\u001b[2m    at D:\\SQA\\RL\\Automation\\PW_RizzPharma_UI_Automation\\tests\\checkout.test.ts:46:5\u001b[22m"
+                    }
+                  ],
+                  "stdout": [
+                    {
+                      "text": "hover\n"
+                    },
+                    {
+                      "text": "test\n"
+                    }
+                  ],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2025-03-10T05:44:36.061Z",
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\SQA\\RL\\Automation\\PW_RizzPharma_UI_Automation\\test-results\\checkout-verify-checkout-with-new-user-is-working-properly\\test-failed-1.png"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\SQA\\RL\\Automation\\PW_RizzPharma_UI_Automation\\pages\\Products_CheckoutPage\\checkout.page.ts",
+                    "column": 19,
+                    "line": 259
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1cac7d196726861375b6-1e5d147b1ae10cb73bb4",
+          "file": "checkout.test.ts",
+          "line": 5,
+          "column": 6
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-03-10T05:44:34.324Z",
+    "duration": 158369.701,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

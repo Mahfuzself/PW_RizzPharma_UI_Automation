@@ -13,6 +13,12 @@ const config: PlaywrightTestConfig = {
   retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 1 : 1,
   timeout: 1 * 30 * 10000,
+  reporter: [
+    ['list'],
+    // ['json', {  outputFile: 'test-results.json' }],
+    ['html', { outputFolder: 'playwright-report', open: 'always' }],
+   [ './customReport.ts']
+  ],
   // globalTeardown: require.resolve("./mailer.js"),
   use: {
     actionTimeout: 10 * 6000,
@@ -40,8 +46,8 @@ const config: PlaywrightTestConfig = {
   // export default defineConfig({
   //   globalSetup: './global-setup',
   // });
-  globalTeardown: "./global-teardown.ts",
-  globalSetup: require.resolve('./global-setup'),  // Set the global setup script
+  // globalTeardown: "./global-teardown.ts",
+  globalSetup: require.resolve('./global-setup.ts'),  // Set the global setup script
   // globalTeardown: require.resolve('./global-teardown'),  // Set the global teardown script
 };
 

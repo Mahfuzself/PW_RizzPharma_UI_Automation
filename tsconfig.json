@@ -19,11 +19,12 @@
       "pages/RegisterPage/*",
       "pages/Products_CheckoutPage/*"
     ],
-      "@fixtures/*": ["fixtures/*"]
+      "@fixtures/*": ["fixtures/*"],
+      // '@utils/*' :['utils/*']
     },
     
   },
-  // "include": [
+  // "included": [
   //   "pages/**/*.ts",
   //   "fixtures/**/*.ts"
   // ]

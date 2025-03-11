@@ -8,7 +8,9 @@ test("Complete registration process",async({page,registerPage})=>{
     await page.goto('/Register?returnurl=')
     let firstname = "",lastname="", rendomemail="",fullname = "",email="";
     firstname= await registerPage.generateFirstName();
+    firstname.split(" ").join("");
     lastname = await registerPage.generateLastName()
+    lastname.split(" ").join("");
     email =firstname+lastname+"@yopmail.com"
 
     await registerPage.clickSignupBtn()
@@ -21,6 +23,6 @@ test("Complete registration process",async({page,registerPage})=>{
     await registerPage.inputpasswordfield()
     await registerPage.inputConfirmpasswordfield()
     await registerPage.ClickSubmit()
-    await page.close()
+    // await page.close()
 
 })
