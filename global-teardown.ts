@@ -5,7 +5,7 @@ async function globalTeardown() {
   const context = await browser.newContext();
   const page = await context.newPage();
 
-  try {;
+  try {
     await context.tracing.start({ screenshots: true, snapshots: true });
     // await cleanUpFunc(page);
   } catch (e) {

@@ -64,7 +64,7 @@ const config: PlaywrightTestConfig = {
   // });
   // globalTeardown: "./global-teardown.ts",
   globalSetup: require.resolve('./global-setup.ts'),  // Set the global setup script
-  // globalTeardown: require.resolve('./global-teardown'),  // Set the global teardown script
+   globalTeardown: require.resolve('./global-teardown.ts'),  // Set the global teardown script
 };
 
 export default config;
