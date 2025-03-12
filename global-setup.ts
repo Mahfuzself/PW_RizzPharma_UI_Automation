@@ -1,5 +1,5 @@
 // global-setup.ts
-import { chromium, Browser } from 'playwright';
+import { chromium, Browser, webkit } from 'playwright';
 // global.d.ts or a similar file in your project
 export default async function globalSetup() {
   // Launch the browser before the tests start

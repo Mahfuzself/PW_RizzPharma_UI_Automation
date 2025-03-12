@@ -14,7 +14,7 @@ test("check Athletic Performance category working successfully",async({page,cate
     await page.getByRole('button', { name: 'I Agree' }).click();
     await page.getByRole('button', { name: '' }).click();
 })
-test.only("Check beauty and hairloss category working successfully", async ({ page, categoryPage }) => {
+test("Check beauty and hairloss category working successfully", async ({ page, categoryPage }) => {
     await page.goto("https://rizzpharma.thrivewellrx.com/");
     await page.getByRole('button', { name: 'No Thanks' }).click();
     await page.getByRole('button', { name: 'Category ' }).click();
@@ -58,18 +58,18 @@ test.only("Check beauty and hairloss category working successfully", async ({ pa
     await page.getByRole('textbox', { name: 'Email Address  Email Address' }).fill('mahfuz@yopmail.com');
     await page.locator('label').filter({ hasText: 'Same as shipping Information' }).locator('span').nth(1).click();
     await page.getByRole('button', { name: 'Next' }).click();
-    await page.getByRole('button', { name: 'Upload Documents' }).click();
-    await page.getByText('Browse Files').click();
-//    await page.getByRole('button', { name: 'No Thanks' }).click();
+//     await page.getByRole('button', { name: 'Upload Documents' }).click();
+//     await page.getByText('Browse Files').click();
+// //    await page.getByRole('button', { name: 'No Thanks' }).click();
 
-    // await page.getByText('Browse Files').click();
-    await page.locator('#Body').setInputFiles('d:\\SQA\\RL\\Automation\\PW_RizzPharma_UI_Automation\\testData\\images\\Front.png'); 
-    await page.waitForTimeout(3000)
-    await page.getByRole('button', { name: 'Driving license back part ' }).click();
-    await page.getByRole('listitem').filter({ hasText: 'Driving license front part' }).locator('a').click();
-    await page.getByRole('button', { name: 'Save' }).click();
-    await page.getByRole('button', { name: 'Select a report type ' }).click();
-    await page.getByRole('listitem').filter({ hasText: 'Driving license front part' }).locator('a').click();
-    await page.getByRole('button', { name: 'Save' }).click();
-    await page.getByRole('button', { name: 'Okay' }).click();
+//     // await page.getByText('Browse Files').click();
+//     await page.locator('#Body').setInputFiles('d:\\SQA\\RL\\Automation\\PW_RizzPharma_UI_Automation\\testData\\images\\Front.png'); 
+//     await page.waitForTimeout(3000)
+//     await page.getByRole('button', { name: 'Driving license back part ' }).click();
+//     await page.getByRole('listitem').filter({ hasText: 'Driving license front part' }).locator('a').click();
+//     await page.getByRole('button', { name: 'Save' }).click();
+//     await page.getByRole('button', { name: 'Select a report type ' }).click();
+//     await page.getByRole('listitem').filter({ hasText: 'Driving license front part' }).locator('a').click();
+//     await page.getByRole('button', { name: 'Save' }).click();
+//     await page.getByRole('button', { name: 'Okay' }).click();
 });

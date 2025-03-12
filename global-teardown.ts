@@ -1,4 +1,4 @@
-import { chromium, Page } from "@playwright/test";
+import { chromium, Page, webkit } from "@playwright/test";
 
 async function globalTeardown() {
   const browser = await chromium.launch();

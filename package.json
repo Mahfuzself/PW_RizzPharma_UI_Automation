@@ -9,10 +9,12 @@
   "description": "",
   "devDependencies": {
     "@playwright/test": "^1.50.1",
-    "@types/node": "^22.13.5"
+    "@types/node": "^22.13.5",
+    "allure-commandline": "^2.33.0"
   },
   "dependencies": {
     "@Playwright/test": "npm:@playwright/test@^1.50.1",
+    "allure-playwright": "3.2.0",
     "open-typescript": "^4.9.4"
   },
   "compilerOptions": {
