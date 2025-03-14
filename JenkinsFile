@@ -1,14 +1,8 @@
 pipeline {
-    agent any
-
-        environment {
-            NODE_HOME = tool name: 'nodejs', type: 'NodeJS'  // This must match the name in Global Tool Configuration
-            PATH = "${NODE_HOME}/bin:${env.PATH}"
-        }
 
         stages {
 
-        stage('Check Node.js Version') {
+        stage('install playwright') {
             steps {
                 sh 'node -v'    // Verify the Node.js version
                 sh 'npm -v'     // Verify the npm version
