@@ -1,33 +1,37 @@
+
 pipeline {
-    agent {
-        any {
-            image 'mcr.microsoft.com/playwright:v1.10.0-focal'
-            label 'your-agent-label' // Optional, specify if you want to restrict it to a specific Jenkins agent
-            args '--privileged'
-            
-        }
+  agent { 
+    docker { 
+      image 'mcr.microsoft.com/playwright:v1.17.2-focal'
+    } 
+  }
+  stages {
+    stage('install playwright') {
+      steps {
+        sh '''
+          npm i -D @playwright/test
+          npx playwright install
+        '''
+      }
     }
-
-        stages {
-
-        stage('install playwright') {
-            steps {
-                sh 'node -v'    // Verify the Node.js version
-                sh 'npm -v'     // Verify the npm version
-            }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm ci'
-                sh 'npx playwright install --with-deps'
-            }
-        }
-        
-        stage('Run Playwright Tests') {
-            steps {
-                sh 'npx playwright test --grep PlaywrightWithJenkins'  // You can specify browsers or configurations
-            }
-        }
+    stage('help') {
+      steps {
+        sh 'npx playwright test --help'
+      }
     }
+    stage('test') {
+      steps {
+        sh '''
+          npx playwright test --list
+          npx playwright test
+        '''
+      }
+    //   post {
+    //     success {
+    //       archiveArtifacts(artifacts: 'homepage-*.png', followSymlinks: false)
+    //       sh 'rm -rf *.png'
+    //     }
+    //   }
+    }
+  }
 }
