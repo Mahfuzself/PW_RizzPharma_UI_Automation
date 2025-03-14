@@ -1,37 +1,29 @@
-
 pipeline {
-  agent { 
-    docker { 
-      image 'mcr.microsoft.com/playwright:v1.17.2-focal'
-    } 
-  }
+  agent any
+    tools {
+        nodejs "node" // Ensure this matches the NodeJS installation name configured in Jenkins
+    }
   stages {
-    stage('install playwright') {
+    stage('Install playwright and running tests') {
       steps {
         sh '''
-          npm i -D @playwright/test
-          npx playwright install
+            chmod +x command.sh
+            ./command.sh
         '''
       }
     }
-    stage('help') {
-      steps {
-        sh 'npx playwright test --help'
-      }
-    }
-    stage('test') {
+    stage('Reporting') {
       steps {
         sh '''
-          npx playwright test --list
-          npx playwright test
+          echo "Generating Reports! Yup all the test cases are executed."
         '''
       }
-    //   post {
-    //     success {
-    //       archiveArtifacts(artifacts: 'homepage-*.png', followSymlinks: false)
-    //       sh 'rm -rf *.png'
-    //     }
-    //   }
+      post {
+        always {
+            // Uploading artifacts
+            archiveArtifacts artifacts: 'playwright-report/**/*', allowEmptyArchive: true
+        }
+    }
     }
   }
 }
