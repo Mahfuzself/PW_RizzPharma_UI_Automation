@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker {
+        any {
             image 'mcr.microsoft.com/playwright:v1.10.0-focal'
             label 'your-agent-label' // Optional, specify if you want to restrict it to a specific Jenkins agent
             args '--privileged'
