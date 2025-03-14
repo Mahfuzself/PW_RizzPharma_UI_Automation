@@ -1,0 +1,8 @@
+{
+    "workbench.editor.enablePreview": true,
+    "editor.find.addExtraSpaceOnTop": true,
+    "window.autoDetectColorScheme": false,
+    "application.experimental.rendererProfiling": false,
+    "ipynb.experimental.serialization": true,
+    "ipynb.pasteImagesAsAttachments.enabled": true
+}
