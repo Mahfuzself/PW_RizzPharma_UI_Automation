@@ -1,29 +1,47 @@
 pipeline {
-  agent any
-    tools {
-        nodejs "node" // Ensure this matches the NodeJS installation name configured in Jenkins
+    agent any
+
+    environment {
+        // Path to your Node.js installation
+        NODE_HOME = 'C:\\Program Files\\nodejs'
+        PATH = "${NODE_HOME}\\bin;${env.PATH}"
     }
-  stages {
-    stage('Install playwright and running tests') {
-      steps {
-        sh '''
-            chmod +x command.sh
-            ./command.sh
-        '''
-      }
-    }
-    stage('Reporting') {
-      steps {
-        sh '''
-          echo "Generating Reports! Yup all the test cases are executed."
-        '''
-      }
-      post {
-        always {
-            // Uploading artifacts
-            archiveArtifacts artifacts: 'playwright-report/**/*', allowEmptyArchive: true
+
+    stages {
+        stage('Install Dependencies') {
+            steps {
+                script {
+                    // Ensure the correct version of Node.js is being used
+                    echo "Installing dependencies..."
+                    bat 'npm install'
+                }
+            }
+        }
+
+        stage('Run Playwright Tests') {
+            steps {
+                script {
+                    echo "Running Playwright Tests..."
+                    // Use ts-node to execute Playwright tests written in TypeScript
+                    bat 'npx playwright install'
+                    bat 'npx ts-node tests/sample.test.ts'
+                }
+            }
+        }
+
+        stage('Clean Up') {
+            steps {
+                script {
+                    echo "Cleaning up..."
+                    // You can perform any necessary clean-up tasks here
+                }
+            }
         }
     }
+
+    post {
+        always {
+            echo "Pipeline execution complete."
+        }
     }
-  }
 }
