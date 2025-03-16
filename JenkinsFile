@@ -44,4 +44,11 @@ pipeline {
             echo "Pipeline execution complete."
         }
     }
+     stages {
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/Mahfuzself/PW_RizzPharma_UI_Automation.git', branch: 'main'
+            }
+        }
+    }
 }
