@@ -2,7 +2,9 @@ import test,{ expect} from '@fixtures/basepages';
 import { Frame, Page } from "@playwright/test";
 import ENV from 'utils/env'
 import webHelper from "../helper/webHelper";
-test("verify checkout with new user is working properly",async({page,registerPage,loginPage,checkoutPage})=>{
+import * as XLSX from 'xlsx';
+
+test("verify checkout with new user is working properly",async({page,registerPage,loginPage,checkoutPage,docmedilinkloginPage})=>{
     const helper = new webHelper(page);
     let firstName = "",lastName = "", email = ""
     firstName = await registerPage.generateFirstName()
@@ -45,6 +47,12 @@ test("verify checkout with new user is working properly",async({page,registerPag
     await checkoutPage.CheckedSameasShipping()
     await checkoutPage.ClickNext()
     await helper.uploadFile('d:\\SQA\\RL\\Automation\\PW_RizzPharma_UI_Automation\\testData\\images\\Front.png', checkoutPage.fileUploadLocator, checkoutPage.uploadBtnLocator) 
+    await page.getByRole('button', { name: 'Select a report type ' }).click();
+    await page.getByText('Driving license front part').click();
+    await page.getByRole('button', { name: 'Save' }).click();
+    await page.getByRole('button', { name: 'Okay' }).click();
+    await page.goto('https://stage.docmedilink.com/login');
+    await docmedilinkloginPage.login()
     // await checkoutPage.ClicIWillDoLater()
 
 

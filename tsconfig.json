@@ -19,6 +19,7 @@
       "pages/RegisterPage/*",
       "pages/Products_CheckoutPage/*",
       "pages/categoryPage/*",
+      "pages/docmedilinkPage/*"
       
     ],
       "@fixtures/*": ["fixtures/*"],

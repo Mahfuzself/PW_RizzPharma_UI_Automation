@@ -208,7 +208,7 @@ export default class CheckoutPage {
         const ele = await this.page.locator(this.checkoutPage_Elements.ShippingAddress)
         try {
             ele.fill("141")
-            await this.page.waitForTimeout(1000)
+            await this.page.waitForTimeout(2000)
             await this.page.keyboard.press('ArrowDown')
             // await this.page.waitForTimeout(1000)
             // await this.page.keyboard.press('ArrowDown')
