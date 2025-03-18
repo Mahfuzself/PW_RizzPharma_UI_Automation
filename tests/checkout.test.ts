@@ -1,8 +1,9 @@
-
 import test,{ expect} from '@fixtures/basepages';
 import { Frame, Page } from "@playwright/test";
-import ENV from 'utils/env';
+import ENV from 'utils/env'
+import webHelper from "../helper/webHelper";
 test("verify checkout with new user is working properly",async({page,registerPage,loginPage,checkoutPage})=>{
+    const helper = new webHelper(page);
     let firstName = "",lastName = "", email = ""
     firstName = await registerPage.generateFirstName()
     lastName = await registerPage.generateLastName()
@@ -43,7 +44,8 @@ test("verify checkout with new user is working properly",async({page,registerPag
     await checkoutPage.InputShippingEmail(email)
     await checkoutPage.CheckedSameasShipping()
     await checkoutPage.ClickNext()
-    await checkoutPage.ClicIWillDoLater()
+    await helper.uploadFile('d:\\SQA\\RL\\Automation\\PW_RizzPharma_UI_Automation\\testData\\images\\Front.png', checkoutPage.fileUploadLocator, checkoutPage.uploadBtnLocator) 
+    // await checkoutPage.ClicIWillDoLater()
 
 
 })
@@ -107,10 +109,7 @@ test("Login with checkout",async({page,registerPage,checkoutPage,loginPage})=>{
 
 
 })
-test("Playwright codegen test",async({page})=>{
-        await page.goto('http://rizzpharma.thrivewellrx.com/');
-        await page.getByRole('button', { name: '' }).click();
-        await page.locator('div:nth-child(3) > .product-card__footer > .product-card__btn').click();
-        await page.getByRole('button', { name: '' }).click();
-        
+test("Upload images",async({page})=>{
+        await page.getByText('Browse Files').click();
+        await page.locator('#Body').setInputFiles('Front.png');
 })

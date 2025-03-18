@@ -5,8 +5,9 @@ export default class CheckoutPage {
     // static login: any;
     constructor(page: Page) {
         this.page = page;
+        // this.filePath = this.page.locator(this.checkoutPage_Elements.filePath);
     }
-    private checkoutPage_Elements  ={
+    checkoutPage_Elements  ={
       AddToCart:"div:nth-child(3) > .product-card__footer > .product-card__btn",
       cart:'//button[@class="cart"]',
       proccedToCheckout:'//button[@class="rizz-btn rizz-btn__primary-grad"]',
@@ -23,8 +24,16 @@ export default class CheckoutPage {
       ShippingAddress:"(//input[@class='basic-input pac-target-input'])[1]",
       Shippingemail:"//input[@title='Shipping email is required']",
       RecuringPlan:'//span[text()="Recurring plan"]',
+      
+      
+      
 
     }
+        filePath: string ="testData\images\Front.png"
+        fileUploadLocator : string= "//span[contains(@class,'rizz-btn rizz-btn-size-lg')]"
+        uploadBtnLocator : string = "(//div[@class='modal__actions']//button)[2]"
+//    readonly filePath=  this.page.locator(this.checkoutPage_Elements.filePath)
+    
     async clickAddToCardProduct() {
         // let recuringplan = await this.page.locator('(//div[@class="product-card"]//following-sibling::span[text()="Recurring plan"])[1]')
         // await this.page.waitForSelector(this.checkoutPage_Elements.AddToCart)
@@ -265,6 +274,9 @@ export default class CheckoutPage {
         return lastname
         
     }
+    // async uploadFile(filePath: "D:\SQA\RL\Automation\PW_RizzPharma_UI_Automation\testData\images\Front.png",fileUploadLocator: "//button[normalize-space(text())='Upload Documents']",uploadBtnLocator: "//span[normalize-space(text())='Browse Files']"){
+
+    // }
     // async ClickRizzLogo(){
     //     const ele = await this.page.locator(this.LoginPage_Elements.RizzLogo)
     //     try {
