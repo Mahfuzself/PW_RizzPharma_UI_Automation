@@ -3,8 +3,9 @@ import { Frame, Page } from "@playwright/test";
 import ENV from 'utils/env'
 import webHelper from "../helper/webHelper";
 import * as XLSX from 'xlsx';
+import pa from 'path'
 
-test("verify checkout with new user is working properly",async({page,registerPage,loginPage,checkoutPage,docmedilinkloginPage})=>{
+test.only("verify checkout with new user is working properly",async({page,registerPage,loginPage,checkoutPage,docmedilinkloginPage})=>{
     const helper = new webHelper(page);
     let firstName = "",lastName = "", email = ""
     firstName = await registerPage.generateFirstName()
@@ -52,7 +53,19 @@ test("verify checkout with new user is working properly",async({page,registerPag
     await page.getByRole('button', { name: 'Save' }).click();
     await page.getByRole('button', { name: 'Okay' }).click();
     await page.goto('https://stage.docmedilink.com/login');
+    await docmedilinkloginPage.writeDataToExcel(firstName,lastName,"Test@1234",email)
     await docmedilinkloginPage.login()
+    // await docmedilinkloginPage.writeDataToExcel(firstName,lastName,"Test@1234",email)
+    // const userData = [
+    //     ['First Name', 'Last Name', 'Email', 'Password'], // Header row
+    //     [firstName, lastName, email, "Test@1234"], // Data row
+    //   ];
+    
+    //   // Create a new workbook and add the user data as a sheet
+    //   const wb = XLSX.utils.book_new();
+    //   const ws = XLSX.utils.aoa_to_sheet(userData);
+    //   XLSX.utils.book_append_sheet(wb, ws, 'UserData');
+
     // await checkoutPage.ClicIWillDoLater()
 
 

@@ -28,8 +28,6 @@ const test = baseTest.extend<{
                 },
                 docmedilinkloginPage:async({page},use)=>{
                     await use(new docmedilinkLoginPage(page))
-              
-
             },
 })
 

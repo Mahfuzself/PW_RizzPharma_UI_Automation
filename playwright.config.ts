@@ -1,4 +1,4 @@
-import { defineConfig, devices } from '@playwright/test';
+// import { defineConfig, devices } from '@playwright/test';
 import type { PlaywrightTestConfig } from '@playwright/test';
 import ENV from 'utils/env';
 
@@ -12,7 +12,7 @@ const config: PlaywrightTestConfig = {
     // Add more tests as needed
   ],
   fullyParallel: true,
-  retries: process.env.CI ? 2 : 2,
+  retries: process.env.CI ? 1 : 0,
   workers: process.env.CI ? 1 : 1,
   timeout: 1 * 30 * 10000,
   reporter: [
@@ -68,8 +68,8 @@ const config: PlaywrightTestConfig = {
     //   },
     // },
   // ],
-   globalSetup: require.resolve('./global-setup.ts'),  // Set the global setup script
-   globalTeardown: require.resolve('./global-teardown.ts'),  // Set the global teardown script
+  // globalSetup: require.resolve('./global-setup.ts'),  // Set the global setup script
+  // globalTeardown: require.resolve('./global-teardown.ts'),  // Set the global teardown script
 };
 
 export default config;
