@@ -64,16 +64,30 @@ export default class LoginPage {
             throw new Error(`Hompage >> Login >>Enter  User name  >> Enter Password >>  Login button is not functional : ${Error}`)
         }
     }
-    async CloseCoupon(){
-        await this.page.waitForSelector('//button[@class="btn-close"]')
-        const ele = await this.page.locator(this.LoginPage_Elements.CloseCoupon)
-        try {
-            await ele.click()
-             await this.page.waitForTimeout(2000)
-        } catch (error) {
-            throw new Error(`Hompage >> Login >>Enter  User name  >> Enter Password >>  Login>> Coupon is not closedl : ${Error}`)
+    async CloseCoupon(): Promise<void> {
+        // Check if the coupon popup is visible
+        const isCouponVisible = await this.page.isVisible(this.LoginPage_Elements.CloseCoupon);
+    
+        if (isCouponVisible) {
+            console.log("Coupon popup is visible. Attempting to close it...");
+            const ele = await this.page.locator(this.LoginPage_Elements.CloseCoupon);
+            await ele.click();
+            await this.page.waitForTimeout(2000);
+            console.log("Coupon popup closed successfully.");
+        } else {
+            console.log("Coupon popup is not visible. Proceeding to the next action...");
         }
     }
+    // async CloseCoupon(){
+    //     await this.page.waitForSelector('//button[@class="btn-close"]')
+    //     const ele = await this.page.locator(this.LoginPage_Elements.CloseCoupon)
+    //     try {
+    //         await ele.click()
+    //          await this.page.waitForTimeout(2000)
+    //     } catch (error) {
+    //         throw new Error(`Hompage >> Login >>Enter  User name  >> Enter Password >>  Login>> Coupon is not closedl : ${Error}`)
+    //     }
+    // }
     // async login(username: string, password: string) {
     //     await this.enterEmail(username);
     //     await this.enterLoginPassword(password);

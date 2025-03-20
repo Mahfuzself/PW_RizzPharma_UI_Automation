@@ -19,7 +19,9 @@ export default class homePage{
         WeightGoal:"//label[normalize-space(text())='I just need to build a little muscle']",
         OverallGoals_ShredfatLooseWeight:"//label[normalize-space(text())='Shred fat/ Loose Weight']",
         recuringplanText:"//p[contains(.,'Recurring plan')]",
-        selectDose:"//p[normalize-space(text())='Select Dosage']"
+        selectDose:"//p[normalize-space(text())='Select Dosage']", 
+        confirmBtn:"//button[normalize-space(text())='Confirm']",
+        slot:"(//input[@name='dose']/following-sibling::span)[1]"
       }
       async clickFindMyTreatment(): Promise<void> {
         try {
@@ -46,6 +48,7 @@ export default class homePage{
             await this.homepage.waitForSelector(this.HomePageElements.NextBtn, { timeout: 5000 });
             await this.homepage.click(this.HomePageElements.NextBtn);
             console.log("Clicked on 'Next' button successfully.");
+            await this.homepage.waitForTimeout(1000);
         } catch (error) {
             throw new Error(`Homepage >> Next >> Button is not clickable: ${error}`);
         }
@@ -124,6 +127,7 @@ export default class homePage{
         try {
             await this.homepage.waitForSelector(this.HomePageElements.FindindYourTreatment, { timeout: 5000 });
             console.log("Assertion passed: 'Findind Your Treatment' element is visible.");
+          // await this.homepage.waitForTimeout(5000);
         } catch (error) {
             throw new Error(`Homepage >> Assertion >> 'Findind Your Treatment' element is not visible: ${error}`);
         }
@@ -162,6 +166,7 @@ export default class homePage{
                 const buyNowButton = await productDiv.$(buyNowButtonLocator);
                 if (buyNowButton) {
                     await buyNowButton.click();
+                    await this.homepage.waitForTimeout(5000);
                     console.log("Clicked on 'Buy Now' button successfully.");
                 } else {
                     throw new Error("Homepage >> Assertion >> 'Buy Now' button is not found inside the product div.");
@@ -187,6 +192,30 @@ export default class homePage{
             }
         } catch (error) {
             throw new Error(`Homepage >> Assertion >> 'Select Dosage' element is not visible or incorrect: ${error}`);
+        }
+    }
+    async clickConfirmButton(): Promise<void> {
+        try {
+            // Wait for the "Confirm" button to be visible
+            await this.homepage.waitForSelector(this.HomePageElements.confirmBtn, { timeout: 5000 });
+    
+            // Click the "Confirm" button
+            await this.homepage.click(this.HomePageElements.confirmBtn);
+            console.log("Clicked on 'Confirm' button successfully.");
+            await this.homepage.waitForTimeout(5000);
+        } catch (error) {
+            throw new Error(`Homepage >> Confirm >> 'Confirm' button is not clickable: ${error}`);
+        }
+    }
+    async selectSlotRadioButton(): Promise<void> {
+        try {
+            // Wait for the radio button to be visible
+            const slotElement = await this.homepage.waitForSelector(this.HomePageElements.slot, { timeout: 5000 });
+    
+            // Click the radio button
+            console.log("Selected the radio button for 'Slot' successfully.");
+        } catch (error) {
+            throw new Error(`Homepage >> Slot >> Radio button is not selectable: ${error}`);
         }
     }
 }

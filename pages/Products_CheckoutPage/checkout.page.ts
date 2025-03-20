@@ -59,7 +59,7 @@ export default class CheckoutPage {
         const ele = await this.page.locator(this.checkoutPage_Elements.cart)
         try {
             await ele.click()
-            await this.page.waitForTimeout(4000)
+            await this.page.waitForTimeout(5000)
         } catch (error) {
             throw new Error(`Hompage >> Add to Cart Products >> Cart >> Cart button is not functional : ${Error}`)
         }
