@@ -213,6 +213,7 @@ export default class homePage{
             const slotElement = await this.homepage.waitForSelector(this.HomePageElements.slot, { timeout: 5000 });
     
             // Click the radio button
+            await slotElement.click();
             console.log("Selected the radio button for 'Slot' successfully.");
         } catch (error) {
             throw new Error(`Homepage >> Slot >> Radio button is not selectable: ${error}`);
