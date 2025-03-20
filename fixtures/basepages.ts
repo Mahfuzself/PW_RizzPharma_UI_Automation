@@ -5,12 +5,14 @@ import RegisterPage from '@pages/register.page';
 import CheckoutPage from '@pages/checkout.page';
 import categoryPage from '@pages/category.page';
 import docmedilinkLoginPage from '@pages/docmedilinklogin.page';
+import homePage from '@pages/home.page';
 const test = baseTest.extend<{
     loginPage: LoginPage;
     registerPage : RegisterPage;
     checkoutPage : CheckoutPage;
     categoryPage : categoryPage;
     docmedilinkloginPage : docmedilinkLoginPage;
+    homepage : homePage;
    
 
 }>( {
@@ -28,6 +30,9 @@ const test = baseTest.extend<{
                 },
                 docmedilinkloginPage:async({page},use)=>{
                     await use(new docmedilinkLoginPage(page))
+            },
+            homepage:async({page},use)=>{
+                await use(new homePage(page))
             },
 })
 

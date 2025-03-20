@@ -8,7 +8,8 @@ const config: PlaywrightTestConfig = {
     "login.test.ts",
     "register.test.ts",
     "checkout.test.ts",
-    "category.test.ts"
+    "category.test.ts",
+    "home.test.ts",
     // Add more tests as needed
   ],
   fullyParallel: true,
