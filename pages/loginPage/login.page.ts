@@ -72,7 +72,7 @@ export default class LoginPage {
             console.log("Coupon popup is visible. Attempting to close it...");
             const ele = await this.page.locator(this.LoginPage_Elements.CloseCoupon);
             await ele.click();
-            await this.page.waitForTimeout(2000);
+            await this.page.waitForTimeout(5000);
             console.log("Coupon popup closed successfully.");
         } else {
             console.log("Coupon popup is not visible. Proceeding to the next action...");

@@ -21,7 +21,9 @@ export default class homePage{
         recuringplanText:"//p[contains(.,'Recurring plan')]",
         selectDose:"//p[normalize-space(text())='Select Dosage']", 
         confirmBtn:"//button[normalize-space(text())='Confirm']",
-        slot:"(//input[@name='dose']/following-sibling::span)[1]"
+        slot:"(//input[@name='dose']/following-sibling::span)[1]",
+        categoryCart:'//div[@class="home-categorie__item"]',
+        ResearchUseonly:'//div[@class="product__card d-flex flex-column"]',
       }
       async clickFindMyTreatment(): Promise<void> {
         try {
@@ -207,6 +209,65 @@ export default class homePage{
             throw new Error(`Homepage >> Confirm >> 'Confirm' button is not clickable: ${error}`);
         }
     }
+    // async selectSlotRadioButton(): Promise<void> {
+    //     try {
+    //         // Wait for the radio button to be visible
+    //         const slotElement = await this.homepage.waitForSelector(this.HomePageElements.slot, { timeout: 5000 });
+    
+    //         // Click the radio button
+    //         await slotElement.click();
+    //         console.log("Selected the radio button for 'Slot' successfully.");
+    //     } catch (error) {
+    //         throw new Error(`Homepage >> Slot >> Radio button is not selectable: ${error}`);
+    //     }
+    // }
+    async viewWeightLossDetails(): Promise<void> {
+        try {
+            // Locator for all divs with the class "home-categorie__item"
+            const categoryItemsLocator = this.HomePageElements.categoryCart;
+    
+            // Wait for all the elements to be visible
+            await this.homepage.waitForSelector(categoryItemsLocator, { timeout: 10000 });
+            const categoryItems = await this.homepage.$$(categoryItemsLocator);
+    
+            // Assert that there are 6 such divs
+            // if (categoryItems.length !== 6) {
+            //     throw new Error(`Expected 6 categories, but found ${categoryItems.length}`);
+            // }
+            // console.log(`Assertion passed: Found ${categoryItems.length} categories.`);
+    
+            // Loop through the divs to find the one containing "Weight Loss"
+            for (const item of categoryItems) {
+                const textContent = await item.textContent();
+                console.log(`Category Text: ${textContent?.trim()}`);
+                if (textContent?.trim().includes("Weight")) {
+                    console.log("Found 'Weight Loss' category. Viewing details...");
+                    await item.click(); // Click on the div to view details
+                    await this.homepage.waitForTimeout(5000);
+                    return;
+                }
+            }
+    
+            // If no div contains "Weight Loss", throw an error
+            throw new Error("Weight Loss category not found.");
+        } catch (error) {
+            throw new Error(`Homepage >> View Details >> Failed to view 'Weight Loss' details: ${error}`);
+        }
+    }
+    async clicweightmanagementapproach(): Promise<void> {
+        try {
+            const dietStruggleLocator = "//label[normalize-space(text())='I’ve tried diets but struggle to maintain results']";
+    
+            // Wait for the element to be visible
+            await this.homepage.waitForSelector(dietStruggleLocator, { timeout: 5000 });
+    
+            // Click the element
+            await this.homepage.click(dietStruggleLocator);
+            console.log("Clicked on 'I’ve tried diets but struggle to maintain results' option successfully.");
+        } catch (error) {
+            throw new Error(`Homepage >> Diet Struggle Option >> 'I’ve tried diets but struggle to maintain results' is not clickable: ${error}`);
+        }
+    }
     async selectSlotRadioButton(): Promise<void> {
         try {
             // Wait for the radio button to be visible
@@ -219,4 +280,53 @@ export default class homePage{
             throw new Error(`Homepage >> Slot >> Radio button is not selectable: ${error}`);
         }
     }
+    async selectResearchuseonly(): Promise<void> {
+        await this.homepage.waitForTimeout(5000);
+        try {
+            // Locator for all divs with the class "home-categorie__item"
+            const categoryItemsLocator = this.HomePageElements.ResearchUseonly;
+    
+            // Wait for all the elements to be visible
+            await this.homepage.waitForSelector(categoryItemsLocator, { timeout: 10000 });
+            const categoryItems = await this.homepage.$$(categoryItemsLocator);
+    
+            // Assert that there are 6 such divs
+            // if (categoryItems.length !== 6) {
+            //     throw new Error(`Expected 6 categories, but found ${categoryItems.length}`);
+            // }
+            // console.log(`Assertion passed: Found ${categoryItems.length} categories.`);
+    
+            // Loop through the divs to find the one containing "Weight Loss"
+            for (const item of categoryItems) {
+                const textContent = await item.textContent();
+                console.log(`Category Text: ${textContent?.trim()}`);
+                if (textContent?.trim().includes("Research use only")) {
+                    console.log("Found 'Research use Only' category. Viewing details...");
+                    await this.homepage.click("(//button[normalize-space(text())='Buy Now'])[2]"); // Click on the div to view details
+                    await this.homepage.waitForTimeout(5000);
+                    return;
+                }
+            }
+    
+            // If no div contains "Weight Loss", throw an error
+            throw new Error("Research use only product not found.");
+        } catch (error) {
+            throw new Error(`Homepage >> View Details >> Failed to view use only product click: ${error}`);
+        }
+    }
+    async clickIAgreeButton(): Promise<void> {
+        try {
+            const iAgreeButtonLocator = "//button[normalize-space(text())='I Agree']";
+    
+            // Wait for the "I Agree" button to be visible
+            await this.homepage.waitForSelector(iAgreeButtonLocator, { timeout: 5000 });
+    
+            // Click the "I Agree" button
+            await this.homepage.click(iAgreeButtonLocator);
+            console.log("Clicked on 'I Agree' button successfully.");
+        } catch (error) {
+            throw new Error(`Homepage >> I Agree Button >> 'I Agree' button is not clickable: ${error}`);
+        }
+    }
+    //div[@class="product__action"]
 }

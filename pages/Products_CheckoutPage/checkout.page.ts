@@ -70,7 +70,7 @@ export default class CheckoutPage {
         try {
             await ele.click()
             // await this.page.waitForEvent("close")
-            await this.page.waitForTimeout(2000)
+            await this.page.waitForTimeout(5000)
         } catch (error) {
             throw new Error(`Hompage >> Add to Cart Products >> Cart >> Cart button  >> Procced to checkout button is not funnctional : ${Error}`)
         }
