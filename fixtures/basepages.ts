@@ -6,6 +6,8 @@ import CheckoutPage from '@pages/checkout.page';
 import categoryPage from '@pages/category.page';
 import docmedilinkLoginPage from '@pages/docmedilinklogin.page';
 import homePage from '@pages/home.page';
+import top_ProductPage from '@pages/top_Products.page';
+
 const test = baseTest.extend<{
     loginPage: LoginPage;
     registerPage : RegisterPage;
@@ -13,6 +15,7 @@ const test = baseTest.extend<{
     categoryPage : categoryPage;
     docmedilinkloginPage : docmedilinkLoginPage;
     homepage : homePage;
+    topproductspage : top_productsPage;
    
 
 }>( {
