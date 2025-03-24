@@ -21,7 +21,7 @@
       "pages/categoryPage/*",
       "pages/docmedilinkPage/*",
       "pages/homePage/*",
-      "pages/top_productsPage/*",
+      "pages/top_ProductPage/*",
       
     ],
       "@fixtures/*": ["fixtures/*"],

@@ -1,4 +1,5 @@
 
+
 import LoginPage from '@pages/login.page';
 import { test as baseTest } from '@playwright/test';
 import RegisterPage from '@pages/register.page';
@@ -6,7 +7,7 @@ import CheckoutPage from '@pages/checkout.page';
 import categoryPage from '@pages/category.page';
 import docmedilinkLoginPage from '@pages/docmedilinklogin.page';
 import homePage from '@pages/home.page';
-import top_ProductPage from '@pages/top_Products.page';
+import top_ProductPage from "@pages/top_Products.page";
 
 const test = baseTest.extend<{
     loginPage: LoginPage;
@@ -15,7 +16,8 @@ const test = baseTest.extend<{
     categoryPage : categoryPage;
     docmedilinkloginPage : docmedilinkLoginPage;
     homepage : homePage;
-    topproductspage : top_productsPage;
+    top_productpage : top_ProductPage;
+    
    
 
 }>( {
@@ -36,6 +38,9 @@ const test = baseTest.extend<{
             },
             homepage:async({page},use)=>{
                 await use(new homePage(page))
+            },
+            top_productpage:async({page},use)=>{
+                await use(new top_ProductPage(page))
             },
 })
 
