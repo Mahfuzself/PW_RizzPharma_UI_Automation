@@ -10,6 +10,7 @@ const config: PlaywrightTestConfig = {
     "checkout.test.ts",
     "category.test.ts",
     "home.test.ts",
+    "top_products.test.ts",
     // Add more tests as needed
   ],
   fullyParallel: true,
