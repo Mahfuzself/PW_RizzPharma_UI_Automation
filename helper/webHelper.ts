@@ -44,9 +44,9 @@ async uploadFile(filePath: string,fileUploadLocator: string,uploadBtnLocator: st
         await addToCartElement.focus();
         await addToCartElement.click();
         console.log("Clicked on 'Add to Cart' button successfully.");
-        await this.webPage.waitForTimeout(1000);
+        await this.webPage.waitForTimeout(3000);
         // Check if the dosage selection modal appears
-        const dosageModalLocator = "//div[@id='product-preview-dose-modal']/div[1]/div[1]";
+        const dosageModalLocator = "//div[@id='product-preview-dose-modal']/div[1]/div[1]";//p[text()="Select Dosage"]
         const isDosageModalVisible = await this.webPage.isVisible(dosageModalLocator);
 
         if (isDosageModalVisible) {
