@@ -3,7 +3,7 @@ import { Page } from '@playwright/test';
 import ENV from 'utils/env';
 import webHelper from '../helper/webHelper';
 import CheckoutPage from '../pages/Products_CheckoutPage/checkout.page';
-test("Verify that product is added to cart from ",async({page,top_productpage,checkoutPage,registerPage,loginPage,docmedilinkloginPage})=>{
+test("Verify that product is added to cart from top product page",async({page,top_productpage,checkoutPage,registerPage,loginPage,docmedilinkloginPage})=>{
     const helper = new webHelper(page);
     let firstName = "",lastName = "", email = ""
     firstName = await registerPage.generateFirstName()
