@@ -18,7 +18,7 @@ const config: PlaywrightTestConfig = {
   workers: process.env.CI ? 1 : 1,
   timeout: 1 * 30 * 10000,
   reporter: [
-    ['list'],
+    ['dot'],
     // ['json', {  outputFile: 'test-results.json' }],
     ['html', { outputFolder: 'playwright-report', open: 'always' }],
    [ './customReport.ts'],

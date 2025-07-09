@@ -82,6 +82,7 @@ async uploadFile(filePath: string,fileUploadLocator: string,uploadBtnLocator: st
   }
   }
   async clickNoThanksIfVisible(): Promise<void> {
+    await this.webPage.waitForTimeout(3000); // Wait for 3 seconds before checking for the button
     try {
         const noThanksButtonLocator = "//button[normalize-space(text())='No Thanks']";
 
@@ -90,7 +91,7 @@ async uploadFile(filePath: string,fileUploadLocator: string,uploadBtnLocator: st
 
         if (isButtonVisible) {
             console.log("'No Thanks' button is visible. Clicking it...");
-            await this.webPage.click(noThanksButtonLocator);
+            await this.webPage.click(noThanksButtonLocator, { timeout: 5000 });
             console.log("Clicked on 'No Thanks' button successfully.");
         } else {
             console.log("'No Thanks' button is not visible. Proceeding without interaction...");

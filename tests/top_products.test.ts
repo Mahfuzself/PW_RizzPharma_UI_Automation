@@ -10,6 +10,7 @@ test("Verify that product is added to cart from top product page",async({page,to
     lastName = await registerPage.generateLastName()
     email = firstName+lastName+"@yopmail.com"
     await page.goto(ENV.BASE_URL)
+    await page.waitForTimeout(3000)
     await helper.clickNoThanksIfVisible()
     await top_productpage.clickTopProductsDropDown()
     await top_productpage.clickSildenafil()
