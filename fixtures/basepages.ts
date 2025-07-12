@@ -10,7 +10,7 @@ import homePage from '@pages/home.page';
 import top_ProductPage from "@pages/top_Products.page";
 
 const test = baseTest.extend<{
-    loginPage: LoginPage;
+    loginPage: LoginPage ;
     registerPage : RegisterPage;
     checkoutPage : CheckoutPage;
     categoryPage : categoryPage;

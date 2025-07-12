@@ -1,0 +1,85 @@
+{
+  "cookies": [
+    {
+      "name": "dnn_IsMobile",
+      "value": "False",
+      "domain": "rizzpharma.thrivewellrx.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "language",
+      "value": "en-US",
+      "domain": "rizzpharma.thrivewellrx.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": ".ASPXANONYMOUS",
+      "value": "JqYgr5QTzIwZd7hxIplsGRnAepyV-aNTLU0F-alq6Z4PVsxU8wstskndghOjkQoh04P3CB1MkGJoQVaqlz0vSnK8q2vnOYGcOtZppdP9i4fVZCAi0",
+      "domain": "rizzpharma.thrivewellrx.com",
+      "path": "/",
+      "expires": 1758116744.358176,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga",
+      "value": "GA1.1.2005266739.1752116752",
+      "domain": ".thrivewellrx.com",
+      "path": "/",
+      "expires": 1786676763.524262,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "authentication",
+      "value": "DNN",
+      "domain": "rizzpharma.thrivewellrx.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": ".DOTNETNUKE",
+      "value": "72BA6AC023865B87F0A116791E425F0C34F1C1B066CE90A68F5DE7D901AA36A396E2D4BD869F433D59A9AEB17599F7B8010AA7DAEF18E116B761D33DCC3CA75E98AD2FE064690624166C01D63FCC165C20F95CB885050EC303A5F0C1",
+      "domain": "rizzpharma.thrivewellrx.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "LastPageId",
+      "value": "4:95",
+      "domain": "rizzpharma.thrivewellrx.com",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_3CRKFYT09Z",
+      "value": "GS2.1.s1752116751$o1$g1$t1752116763$j48$l0$h0",
+      "domain": ".thrivewellrx.com",
+      "path": "/",
+      "expires": 1786676763.524004,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": []
+}

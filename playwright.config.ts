@@ -29,7 +29,10 @@ const config: PlaywrightTestConfig = {
     actionTimeout: 10 * 6000,
     navigationTimeout: 30 * 7000,
     baseURL: ENV.BASE_URL,
+    //  storageState: 'rizz-auth.json',
     trace: 'on-first-retry',
+    video: 'retain-on-failure',
+    
     launchOptions: {
       args: [
         // Add any necessary browser flags
